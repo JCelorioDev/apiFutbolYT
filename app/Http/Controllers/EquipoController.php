@@ -7,6 +7,7 @@ use App\Http\Responses\ApiResponse;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\Rule;
+use Illuminate\Http\Request;
 use Exception;
 
 class EquipoController extends Controller
@@ -29,7 +30,7 @@ class EquipoController extends Controller
     {
         try {
             $request->validate([
-                'nombre_equipo' => 'required|unique:equipos',
+                'nombre_equipo' => 'required|unique:equipo',
                 'nombre_dt' => 'required',
                 'logo' => 'required|file|mimes:png,jpg, jpeg'
             ],
@@ -45,7 +46,7 @@ class EquipoController extends Controller
 
             $nombre = time() . "." . $f->getClientOriginalExtension();
 
-            $f->move(public_patch('logos'), $nombre);
+            $f->move(public_path('logos'), $nombre);
 
             Equipo::create([
                 'nombre_equipo' => $request->nombre_equipo,
@@ -107,13 +108,13 @@ class EquipoController extends Controller
 
             $nombre = time() . "." . $f->getClientOriginalExtension();
 
-            $f->move(public_patch('logos'), $nombre);
+            $f->move(public_path("logos"), $nombre);
 
-            Equipo::update([
-                'nombre_equipo' => $request->nombre_equipo,
-                'nombre_dt' => $request->nombre_dt,
-                'logo' => $nombre
-            ]);
+            $equipo->nombre_equipo = $request->nombre_equipo;
+            $equipo->nombre_dt = $request->nombre_dt;
+            $equipo->logo = $nombre;
+            $equipo->update();
+
 
             return ApiResponse::success('El equipo se actualizo correctamente', 202);
 
@@ -135,7 +136,7 @@ class EquipoController extends Controller
             $equipo = Equipo::where(['id' => $id])->firstOrFail();
             $equipo->delete();
 
-            return ApiResponse::error('Equipo eliminado', 200);
+            return ApiResponse::success('Equipo eliminado', 200);
         } catch (ModelNotFoundException $e) {
             return ApiResponse::error('Equipo no encontrado', 404);
         } catch (Exception $e){

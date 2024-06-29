@@ -9,6 +9,6 @@ class Jugador extends Model
 {
     use HasFactory;
     public $table = 'jugador';
-    public $fillable = ['nombre_jugador', 'n_camisa', 'posicion_jugador' , 'equipo_id'];
-    protected $timestamps = false;
+    protected $fillable = ['nombre_jugador', 'n_camisa', 'posicion_jugador' , 'equipo_id'];
+    public $timestamps = false;
 }
