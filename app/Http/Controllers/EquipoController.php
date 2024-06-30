@@ -143,4 +143,15 @@ class EquipoController extends Controller
             return ApiResponse::error('Error en la base de datos', 500);
         }
     }
+
+    public function jugadores_equipo($idEquipo){
+        try {
+            $je = Equipo::with('jugadores')->findOrFail($idEquipo);
+            return ApiResponse::success('Mostrando jugadores por equipo', 200, $je);
+        } catch (ModelNotFoundException $e) {
+            return ApiResponse::error('Equipo no encontrado', 404);
+        } catch (Exception $e){
+            return ApiResponse::error('Error en la base de datos', 500);
+        }
+    }
 }

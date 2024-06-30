@@ -11,4 +11,8 @@ class Jugador extends Model
     public $table = 'jugador';
     protected $fillable = ['nombre_jugador', 'n_camisa', 'posicion_jugador' , 'equipo_id'];
     public $timestamps = false;
+
+    public function equipos(){
+        return $this->belongsTo(Equipo::class);
+    }
 }

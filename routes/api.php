@@ -11,6 +11,7 @@ Route::controller(EquipoController::class)->group(function () {
     Route::get('/equipo/{id}', 'show');
     Route::post('/equipo/{id}', 'update');
     Route::delete('/equipo/{id}', 'destroy');
+    Route::get('/jugadores-equipo/{idEquipo}', 'jugadores_equipo');
 });
 
 Route::controller(JugadorController::class)->group(function (){

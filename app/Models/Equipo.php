@@ -11,4 +11,9 @@ class Equipo extends Model
     public $table = 'equipo';
     protected $fillable = ['nombre_equipo', 'nombre_dt', 'logo']; // $guarded = []
     public $timestamps = false;
+
+    public function jugadores(){
+        return $this->hasMany(Jugador::class);
+    }
+
 }
