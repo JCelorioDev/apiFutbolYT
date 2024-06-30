@@ -33,7 +33,7 @@ cd apiFutbolYT</code></pre>
         <pre><code>php artisan key:generate</code></pre>
     </li>
     <li><strong>Migrar y sembrar la base de datos:</strong>
-        <pre><code>php artisan migrate --seed</code></pre>
+        <pre><code>php artisan migrate</code></pre>
     </li>
     <li><strong>Iniciar el servidor:</strong>
         <pre><code>php artisan serve</code></pre>
