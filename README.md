@@ -2,6 +2,10 @@
 
 <p>Este proyecto consiste en una API desarrollada en Laravel, diseñada para gestionar operaciones CRUD completas. Esta API será consumida por un frontend desarrollado en Angular, ofreciendo una solución robusta y eficiente para la gestión de datos.</p>
 
+<h2>Diseño MR</h2>
+
+<img src="https://i.ibb.co/9YwqRBd/mrphpmyadmin.png" alt="mrphpmyadmin" border="0">
+
 <h2>Características</h2>
 <ul>
     <li><strong>Operaciones CRUD:</strong> Soporte completo para Crear, Leer, Actualizar y Eliminar recursos en la base de datos.</li>
